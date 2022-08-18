@@ -1,11 +1,10 @@
 function ide
-    echo "project:  " $argv[1]
-    cd ~/Desktop/Today
+    set -l name (basename $argv[1])
+    echo "provided path:    " $argv[1] 
+    echo "Project:  " $name
+    cd $today
     tmux renamew [NOTES]
-    if test $argv = "netvim"
-        set dir ~/Desktop/DEV/Electron/NetVim
-        echo "directory " $dir 
-        tmux new-window -n [SERVER] -c $dir
-        tmux new-window -n [netvim] -c $dir
-    end
+    set current_project $argv[1]
+    tmux new-window -n [SERVER] -c $argv[1]
+    tmux new-window -n [app] -c $argv[1]
 end
