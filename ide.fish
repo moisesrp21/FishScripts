@@ -1,7 +1,7 @@
 function ide
     set -l name (basename $argv[1])
     echo "provided path:    " $argv[1] 
-    echo "Project:  " $name
+    echo "Project:      " $name
     cd $today
     tmux renamew [NOTES]
     set current_project $argv[1]
