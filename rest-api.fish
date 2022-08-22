@@ -12,23 +12,23 @@ function rest-api
                 set -l extension $file[2]
                 switch $extension
                     case 'json'
-                        curl -X POST -H "Content-Type: application/json" -d @$data $destination | jq -C --indent 4  
+                        curl -X POST -H "Content-Type: application/json" -d @$data $destination 
                     case 'txt'    
-                        curl -X POST -H "Content-Type: text/plain" -d @$data $destination | jq -C --indent 4    
+                        curl -X POST -H "Content-Type: text/plain" -d @$data $destination 
                     case 'html'
-                        curl -X POST -H "Content-Type: text/html" -d @$data $destination | jq -C --indent 4    
+                        curl -X POST -H "Content-Type: text/html" -d @$data $destination 
                     case '*'
                         echo $file
                 end
             else
                 if test (string match -e "{" $data)
-                    curl -X POST -H "Content-Type: application/json" -d @$data $destination | jq -C --indent 4  
+                    curl -X POST -H "Content-Type: application/json" -d @$data $destination 
                 else
-                    curl -X POST -d @$data $destination | jq -C --indent 4  
+                    curl -X POST -d @$data $destination 
                 end
             end
         case 'get'
-            curl -X GET $argv[2] | jq -C --indent 4  
+            curl -X GET $argv[2] #| jq -C --indent 4  
         case '*'
             echo 'is something else'
     end
