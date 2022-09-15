@@ -2,7 +2,7 @@ function ide
     if test -d $argv[1]
         set -l name (basename $argv[1])
         echo "provided path:    " $argv[1] 
-        echo "Project:      " $name
+        set current_project $argv[1]
         cd $today
         tmux renamew [NOTES]
         set current_project $argv[1]
